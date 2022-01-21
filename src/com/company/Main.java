@@ -39,7 +39,17 @@ public class Main {
             System.out.println("Число не равно ни 1, ни 0");
         }
     }
-        public static void leapyearcheck (int year){
+
+    public static void loops() {
+
+        int counter = 1;
+        while (counter < 100) {
+            counter++;
+            System.out.println(counter);
+        }
+    }
+
+    public static void leapyearcheck (int year){
             while (year >= 0) {
                 if (year % 4 == 0) {
                     System.out.println("Високосный год: " + year);
