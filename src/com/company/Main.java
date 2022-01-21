@@ -7,47 +7,44 @@ import static java.lang.Integer.sum;
 public class Main {
 
     public static void main(String[] args) {
-        int a = 7;
-        int b = 8;
-        sum(a, b);  // 15
-        sum(3, a);  // 10
-        sum(5, 23); // 28
-
-        boolean aGreaterThenB = a > b;
-        boolean aLessThenB = a < b;
-        boolean aGreaterOrEqualThenB = a >= b;
-        boolean aLessOrEqualThenB = a <= b;
-        if (aGreaterThenB) {
-            System.out.println("a > b");
-        } else {
-            System.out.println("False a >X b");
+        int num = 0;
+        switch (num) {
+            case 1:
+                System.out.println("число равно 1");
+                break;
+            case 8:
+                System.out.println("число равно 8");
+                break;
+            case 9:
+                System.out.println("число равно 9");
+                break;
+            default:
+                System.out.println("число не равно 1, 8, 9");
         }
-        if (aLessThenB) {
-            System.out.println("a < b");
-        } else {
-            System.out.println("False a <X b");
-        }
-        if (aGreaterOrEqualThenB) {
-            System.out.println("a >= b");
-        } else {
-            System.out.println("false a >=X b");
-        }
-        if (aLessOrEqualThenB) {
-            System.out.println("a <= b");
-        } else {
-            System.out.println("False a <=X b");
-        }
-        int userInput = new Scanner(System.in).nextInt();
-        if (userInput % 2 == 0) {
-            System.out.println("Число чётное");
-        } else {
-            System.out.println("Число нечётное");
-        }
-
-    }
-    static void sum(int x, int y) {
-        int z = (x + y);
-        System.out.println(z);
     }
 
+    public static void comparisonsOperators(int num) {
+
+//        != - оператор сравнения "не равно"
+//        && - быстрый оператор "и". Возвращает true только тогда, когда все выражения истинны
+//        || - быстрый "или". Возвращает false только тогда, когда все выражения ложны
+
+        if (num != 8 && num != 1 && num != 9) {
+            System.out.println("Число не равно 1, 8, 9");
+        } else System.out.println("Число равно 1, 8 или 9");
+
+        if (num == 0 || num == 1) {
+            System.out.println("Число равно 1 или 0");
+        } else {
+            System.out.println("Число не равно ни 1, ни 0");
+        }
+    }
+        public static void leapyearcheck (int year){
+            while (year >= 0) {
+                if (year % 4 == 0) {
+                    System.out.println("Високосный год: " + year);
+                }
+                year--;   // эта запись означает “отнять единицу у year”
+            }
+    }
 }
