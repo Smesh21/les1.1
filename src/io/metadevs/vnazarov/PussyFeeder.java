@@ -6,6 +6,10 @@ import java.util.Scanner;
 
 public class PussyFeeder {
     static final int MAXFOOD = 7;
+    static final int FEED_ONE_CAT = 1;
+    static final int FEED_ALL_CATS = 2;
+    static final int FEED_ODD_OR_EVEN = 3;
+    static final int EXIT = 666;
     private static int[] food;
     static Scanner sc = new Scanner(System.in);
     private static int action;
@@ -15,7 +19,6 @@ public class PussyFeeder {
         System.out.println("Введите количество котиков");
         food = new int[sc.nextInt()];
         System.out.println("Русифицированно! Английский язык санкционно удалён");
-        System.out.println("Принудительный выход из программы - числовой ввод 666");
         System.out.println("Далее используйте числовой ввод");
         while (true) {
             System.out.println("___(´｡• ω •｡)___(＾▽＾)___o(≧▽≦)o___(^˵◕ω◕˵^)___(─‿‿─)___");
@@ -28,24 +31,21 @@ public class PussyFeeder {
             System.out.println("1-Покормить или отобрать еду у конкретного кота");
             System.out.println("2-Покормить или отобрать еду у всех котов сразу");
             System.out.println("3-Покормить или отобрать еду у четных или нечетных котов");
+            System.out.println("666-Выход из программы");
             System.out.println("Введите цифрой ваш выбор");
             switch (sc.nextInt()) {
-                case 1:
+                case FEED_ONE_CAT:
                     System.out.println("Какого конкретного котика?");
                     int numOfCat = sc.nextInt() - 1;
                     feedOneCat(numOfCat, action);
                     break;
-                case 2:
-                    System.out.println("Вы выбрали всех котов");
-                    System.out.println("Кормим или отнимам?");
-                    for (int i = 0; i < food.length; i++) {
-                        feedOneCat(i, action);
-                    }
+                case FEED_ALL_CATS:
+                    feedAllCats(action);
                     break;
-                case 3:
+                case FEED_ODD_OR_EVEN:
                     oddOrEven(action);
                     break;
-                case 666:
+                case EXIT:
                     System.exit(0);
                 default:
                     System.out.println("Ввод некоректный. Повторите попытку");
@@ -61,18 +61,16 @@ public class PussyFeeder {
                 if (food[numOfCat] < MAXFOOD) {
                     food[numOfCat] = food[numOfCat] + 1;
                 } else {
-                    System.out.println("Кормушка " + numOfCat + 1 + " уже полная");
+                    System.out.println("Кормушка " + (numOfCat + 1) + " уже полная");
                 }
                 break;
             case 2:
                 if (food[numOfCat] >= 1) {
                     food[numOfCat] = food[numOfCat] - 1;
                 } else {
-                    System.out.println("Кормушка " + numOfCat + 1 + " уже пустая");
+                    System.out.println("Кормушка " + (numOfCat + 1) + " уже пустая");
                 }
                 break;
-            case 666:
-                System.exit(0);
             default:
                 System.out.println("Ввод некоректный. Повторите попытку");
         }
@@ -98,10 +96,15 @@ public class PussyFeeder {
                     }
                 }
                 break;
-            case 666:
-                System.exit(0);
             default:
                 System.out.println("Ввод некоректный. Повторите попытку");
+        }
+    }
+
+    public static void feedAllCats(int action) {
+        System.out.println("Вы выбрали всех котов");
+        for (int i = 0; i < food.length; i++) {
+            feedOneCat(i, action);
         }
     }
 }
